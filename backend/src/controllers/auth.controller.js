@@ -144,7 +144,7 @@ import jwt from "jsonwebtoken"
          return res.status(404).json({ message: "User not found"});
       }
 
-      //todo : update the user in stream as well
+      // update stream user
     try {
         await upsertStreamUser({
          id: updatedUser._id.toString(),
@@ -154,7 +154,6 @@ import jwt from "jsonwebtoken"
       console.log(`Stream user updated after onboarding for ${updatedUser.fullName} successfully`);
     } catch (streamError) {
       console.log("Error in updating stream user after onboarding :", streamError);
-      
     }
 
 
