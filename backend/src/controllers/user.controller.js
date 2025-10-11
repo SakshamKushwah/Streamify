@@ -7,14 +7,14 @@ export async function getRecommendedUsers(req, res) {
         const currentUserId = req.user._id;
         const currentUser = req.user;
 
-        const getRecommendedUsers = await User.find({
+        const recommendedUsers = await User.find({
             $and: [
                 {_id : {$ne: currentUserId}}, //exclude current user 
                 {$id : {$nin: currentUser.friends}}, // exclude friends
                 {isOnboarded: true} // only onboarded users
             ]
         })
-        res.status(200).json(recommendUsers);
+        res.status(200).json(recommendedUsers);
     } catch (error) {
         console.log("Error in getRecommendedUsers controller", error.message);
         res.status(500).json({ message: "Internal Server Error" });
@@ -23,4 +23,17 @@ export async function getRecommendedUsers(req, res) {
 };
 
 
-export async function getMyFriends(req, res) {};
+export async function getMyFriends(req, res) {
+    try {
+        const user = await User.findById(req.user._id)
+        .select("friends")
+        .populate("friends", "fullName profilePic nativeLanguage leraningLanguage");
+
+        res.status(200).json(user.friends);
+    } catch (error) {
+        console.log("Error in getMyFriends controller", error.message);
+        res.status(500).json({ message: "Internal Server Error" });
+        
+        
+    }
+};
