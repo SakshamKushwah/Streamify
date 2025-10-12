@@ -11,4 +11,13 @@ import { onboard } from "../controllers/auth.controller.js";
 
  router.post("/onboarding", protectRoute, onboard);
 
+
+ // forgot password
+
+ //check if user is logged in
+ router.get("/me", protectRoute , (req,res) => {
+   res.status(200).json({ message: "You are logged in", user: req.user });
+ });
+
+
  export default router;
