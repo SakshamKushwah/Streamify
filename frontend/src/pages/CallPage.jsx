@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Callpage = () => {
+const CallPage = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Callpage = () => {
   )
 }
 
-export default Callpage
+export default CallPage
