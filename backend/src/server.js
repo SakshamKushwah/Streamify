@@ -29,4 +29,6 @@ app.use("/api/chat", chatRoutes);
 app.listen(PORT , () => {
     console.log(`server is running on port ${PORT}`);
     connectDB();
+    console.log("Loaded JWT_SECRET:", process.env.JWT_SECRET);
+
 });

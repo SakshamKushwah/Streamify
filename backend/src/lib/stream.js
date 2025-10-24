@@ -7,7 +7,9 @@ const apiSecret = process.env.STREAM_API_SECRET;
  if(!apiKey || !apiSecret){
     console.error("Stream API key and secret are missing");
  }
- const streamClient = StreamChat.getInstance(apiKey, apiSecret);
+ const streamClient = StreamChat.getInstance(apiKey, apiSecret ,{
+    timeout: 5000, // 5 seconds timeout for API requests
+ });
 
 //  stremclient is  help to create user
 
