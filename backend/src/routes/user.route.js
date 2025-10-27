@@ -9,6 +9,7 @@ import {
   sendFriendRequest,
 } from "../controllers/user.controller.js";
 
+
 const router = express.Router();
 
 // apply auth middleware to all routes
@@ -22,5 +23,7 @@ router.put("/friend-request/:id/accept", acceptFriendRequest);
 
 router.get("/friend-requests", getFriendRequests);
 router.get("/outgoing-friend-requests", getOutgoingFriendReqs);
+
+
 
 export default router;
