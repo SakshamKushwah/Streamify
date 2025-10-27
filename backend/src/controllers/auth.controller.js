@@ -84,12 +84,11 @@ export async function login(req, res) {
   expiresIn: "7d",
 });
 
-
-    res.cookie("jwt", token, {
+res.cookie("jwt", token, {
   maxAge: 7 * 24 * 60 * 60 * 1000,
   httpOnly: true,
-  sameSite: "none",       // ✅ allow cross-site cookie
-  secure: false,           // must be false in dev (HTTP)
+  sameSite: "lax", // or "strict"
+  secure: false,   // ok for local dev
 });
 
 
